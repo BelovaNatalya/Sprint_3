@@ -1,4 +1,4 @@
-package ru.praktikum_services.qa_scooter.rest_assured;
+package ru.praktikum_services.qa_scooter.restassured;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;

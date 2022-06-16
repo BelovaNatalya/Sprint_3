@@ -1,4 +1,4 @@
-package ru.praktikum_services.qa_scooter.courierTests;
+package ru.praktikum_services.qa_scooter.courier;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -6,8 +6,9 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.praktikum_services.qa_scooter.courier.*;
-import ru.praktikum_services.qa_scooter.rest_assured.CourierEndpointsRequests;
+import ru.praktikum_services.qa_scooter.models.Courier;
+import ru.praktikum_services.qa_scooter.models.Errors;
+import ru.praktikum_services.qa_scooter.restassured.CourierEndpointsRequests;
 
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,7 +19,7 @@ public class CreateCourierTest {
     CourierEndpointsRequests courierEndpointsRequests;
     Courier courier;
 
-    CourierCredentials courierCredentials;
+    //CourierCredentials courierCredentials;
     int courierID;
 
     public static final String LOGIN_IS_ALREADY_USED = "Этот логин уже используется";
@@ -34,7 +35,7 @@ public class CreateCourierTest {
     @After
     public void cleanUp() {
         if (courier.getLogin() != null && courier.getPassword() !=null) {
-                Response response = courierEndpointsRequests.loginCourier(new CourierCredentials(courier.getLogin(), courier.getPassword()));
+                Response response = courierEndpointsRequests.loginCourier(new Courier(courier.getLogin(), courier.getPassword()));
                 courierID = response.path("id");
                 courierEndpointsRequests.deleteCourier(courierID);
             } else
@@ -46,7 +47,6 @@ public class CreateCourierTest {
     @Description("Дополнительно проверяется тело и код ответа при успешном запросе")
     public void shouldBePossibleToCreateNewCourierWithValidData() {
         Response createCourierResponse = courierEndpointsRequests.createCourier(courier);
-        EndpointCourierCreateResponse endpointCourierCreateResponse = createCourierResponse.as(EndpointCourierCreateResponse.class);
 
         assertThat("Вернулось тело ответа, отличное от \"ok\" : \"true\"", createCourierResponse.path("ok"), equalTo(true));
         assertThat("Вернулся ответ, отличный от 201 Created", createCourierResponse.statusCode(), equalTo(SC_CREATED));

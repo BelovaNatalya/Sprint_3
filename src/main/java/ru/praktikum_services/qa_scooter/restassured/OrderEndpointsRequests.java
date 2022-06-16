@@ -1,4 +1,4 @@
-package ru.praktikum_services.qa_scooter.rest_assured;
+package ru.praktikum_services.qa_scooter.restassured;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;

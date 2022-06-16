@@ -1,10 +1,10 @@
-package ru.praktikum_services.qa_scooter.ordersTests;
+package ru.praktikum_services.qa_scooter.orders;
 
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
-import ru.praktikum_services.qa_scooter.rest_assured.OrderEndpointsRequests;
+import ru.praktikum_services.qa_scooter.restassured.OrderEndpointsRequests;
 import java.util.List;
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.CoreMatchers.equalTo;

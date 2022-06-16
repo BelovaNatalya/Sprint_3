@@ -1,9 +1,8 @@
-package ru.praktikum_services.qa_scooter.rest_assured;
+package ru.praktikum_services.qa_scooter.restassured;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import ru.praktikum_services.qa_scooter.courier.Courier;
-import ru.praktikum_services.qa_scooter.courier.CourierCredentials;
+import ru.praktikum_services.qa_scooter.models.Courier;
 
 import static io.restassured.RestAssured.given;
 
@@ -21,11 +20,11 @@ public class CourierEndpointsRequests extends BaseApiClient {
     }
 
     @Step("Авторизация курьера с учетными данными {credentials}")
-    public Response loginCourier(CourierCredentials credentials) {
+    public Response loginCourier(Courier courier) {
         return
                 given()
                         .spec(getBaseSpecification())
-                        .body(credentials)
+                        .body(courier)
                         .when()
                         .post(COURIER_ENDPOINT + "/login");
     }
@@ -35,7 +34,7 @@ public class CourierEndpointsRequests extends BaseApiClient {
         return
                 given()
                         .spec(getBaseSpecification())
-                        .delete(COURIER_ENDPOINT + ID);
+                        .delete(COURIER_ENDPOINT + "/" + ID);
     }
 
 }

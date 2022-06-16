@@ -1,4 +1,4 @@
-package ru.praktikum_services.qa_scooter.courier;
+package ru.praktikum_services.qa_scooter.models;
 
 public class Errors {
     int responseCode;

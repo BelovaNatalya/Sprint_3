@@ -1,5 +1,6 @@
 package ru.praktikum_services.qa_scooter.courier;
 import org.apache.commons.lang3.RandomStringUtils;
+import ru.praktikum_services.qa_scooter.models.Courier;
 
 public class RandomCourier {
 

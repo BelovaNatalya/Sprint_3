@@ -1,4 +1,4 @@
-package ru.praktikum_services.qa_scooter.courier;
+package ru.praktikum_services.qa_scooter.models;
 
 //this is POJO for courier
 
@@ -11,6 +11,11 @@ public class Courier {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
+    }
+
+    public Courier(String login, String password) {
+        this.login = login;
+        this.password = password;
     }
 
     public Courier() {
